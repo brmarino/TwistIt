@@ -5,10 +5,12 @@ using UnityEngine;
 public class PlayOn : MonoBehaviour {
 
     private bool right, left = false;
+	private ScoreTime theScoreManager;
 
 	// Use this for initialization
 	void Start () {
-		
+		theScoreManager = FindObjectOfType<ScoreTime> ();
+
 	}
 	
 	// Update is called once per frame
@@ -55,6 +57,8 @@ public class PlayOn : MonoBehaviour {
 
     void ResetAll()
     {
+		theScoreManager.scoreIncreasing = false;
+
         if (Mathf.Abs(transform.localEulerAngles.z % 45) > 0 && right)
         {
             transform.localEulerAngles -= Vector3.forward * (transform.localEulerAngles.z % 45 - 45);
@@ -65,5 +69,8 @@ public class PlayOn : MonoBehaviour {
         }
         right = false;
         left = false;
+
+		theScoreManager.scoreCount = 0;
+		theScoreManager.scoreIncreasing = true;
     }
 }
