@@ -16,25 +16,39 @@ public class PlayOn : MonoBehaviour {
 		
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            left = true;
+            if (right == true)
+            {
+                // do nothing
+            }
+            else
+            {
+                left = true;
+            }        
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            right = true;
+            if (left == true)
+            {
+                // do nothing
+            }
+            else
+            {
+                right = true;
+            }           
         }
 
         if (right)
         {
             //transform.Rotate(0, 0, -45);
             //right = false;
-            transform.localEulerAngles = Vector3.Lerp(transform.localEulerAngles, transform.localEulerAngles + Vector3.forward * -45, Time.deltaTime * 5);
+            transform.localEulerAngles = Vector3.Lerp(transform.localEulerAngles, transform.localEulerAngles + Vector3.forward * -45, Time.deltaTime * 5.05f);
             Invoke("ResetAll", 0.2f);
         }
         else if (left)
         {
             //transform.Rotate(0, 0, 45);
             //left = false;
-            transform.localEulerAngles = Vector3.Lerp(transform.localEulerAngles, transform.localEulerAngles + Vector3.forward * 45, Time.deltaTime * 5);
+            transform.localEulerAngles = Vector3.Lerp(transform.localEulerAngles, transform.localEulerAngles + Vector3.forward * 45, Time.deltaTime * 5.05f);
             Invoke("ResetAll", 0.2f);
         }
     }

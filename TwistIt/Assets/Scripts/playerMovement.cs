@@ -25,9 +25,9 @@ public class playerMovement : MonoBehaviour {
         }
 
         speed *= 1.0001f;
-        if (speed >= 9.0f)
+        if (speed >= 8.0f)
         {
-            speed = 9.0f;
+            speed = 8.0f;
         }
 
         myRigidBody.velocity += Vector3.forward * speed * Time.deltaTime;
